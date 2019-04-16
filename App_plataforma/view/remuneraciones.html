@@ -1,0 +1,47 @@
+<ng-include src="'tools/menu_up.html'"></ng-include>
+
+<div class=".section section hero background-light">
+    
+    <div class="container" style="margin-top: -11%">
+        <h2>Remuneraciones</h2>
+         <div class="uk-child-width-1-2 uk-text-center" uk-grid>
+                <div>
+                    <div class="uk-inline">
+                                <span class="uk-form-icon" uk-icon="icon: search"></span>
+                                <input ng-model="buscar" class="uk-input" type="text" placeholder="Buscar">
+                    </div>
+                    <a style="background: green;" class="uk-button uk-button-danger" onclick="tableToExcel('testTable', 'Remuneraciones')">Excel</a>
+                    <a href="#/"><span class="uk-icon-button uk-margin-small-right" style="color: green;margin-left: 1%;" uk-icon="icon: plus-circle; ratio: 2"></span></a>
+                </div>
+            </div>
+        <div class="uk-overflow-auto" style="margin-top: 2%">
+            <table class="uk-table .table table-striped .ListaTabla header_fijo" id="testTable" summary="Code page support in different versions of MS Windows." rules="groups">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Banco</th>
+                        <th>Cuenta</th>
+                        <th>Numero Cuenta</th>
+                        <th>Monto</th>
+                        <th>Fecha</th>
+                        <th>Rut Docente</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="r in Remuneraciones | filter:buscar">
+                        <td>{{r.id}}</td>
+                        <td>{{r.banco}}</td>
+                        <td>{{r.tipo_cuenta}}</td>
+                        <td>{{r.n_cuenta}}</td>
+                        <td>{{r.monto}}</td>
+                        <td>{{r.fecha}}</td>
+                        <td>{{r.rut}}</td>
+    <!--                    <td><a style="content: \0024;color: green" class="uk-icon-button uk-margin-small-right">&#36;</a></td>-->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+	</div>
+	<div class="background-image" style="background: url(template/images/hero.jpg) no-repeat center center; background-size: cover; opacity: .2;"></div>
+	
+</div>

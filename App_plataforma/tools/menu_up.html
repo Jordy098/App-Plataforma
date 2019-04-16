@@ -1,0 +1,72 @@
+<div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
+    <nav class="uk-navbar-container" uk-navbar style="position: relative; z-index: 980;">
+        <div class="uk-navbar-left">
+            <a class="uk-navbar-item uk-logo" href="#">App-Plataforma</a>
+            <ul class="uk-navbar-nav">
+                 <li ng-class="activacionU"><a href="#">Usuarios</a>
+                    <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li class="uk-nav-header">Lista de</li>
+                        <li ng-class="activacion0" ng-click="seleccionar('Docentes')"><a href="#/docentes">Docentes</a></li>
+                        <li ng-class="activacion" ng-click="seleccionar('Alumnos')"><a href="#/alumnos">Alumnos</a></li>
+                        <li ng-class="activacion1" ng-click="seleccionar('Cursos')"><a href="#/alumnos_curso">Alumnos en Cursos</a></li>
+                    </ul>
+                    </div>
+                </li>
+                <li ng-class="activacion2" ng-click="seleccionar('Matriculas')"><a href="#/alumnos_matricula">Matriculas</a></li>
+                <li ng-class="activacion3" ng-click="seleccionar('Boletas')"><a href="#/boletas">Boletas</a></li>
+                <li ng-class="activacion3_5" ng-click="seleccionar('Remunereciones')"><a href="#/remuneraciones">Remunereciones</a></li>
+<!--
+                <li>
+                    <a href="#">Matriculas</a>
+                    <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+                            <li class="uk-active"><a href="#">Inicio</a></li>
+                            <li class="uk-parent">
+                                <a href="#">Parent</a>
+                                <ul class="uk-nav-sub">
+                                    <li><a href="#">item</a></li>
+                                    <li><a href="#">item</a></li>
+                                </ul>
+                            </li>
+                            <li class="uk-nav-header">Header</li>
+                            <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Item</a></li>
+                            <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Item</a></li>
+                            <li class="uk-nav-divider"></li>
+                            <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: trash"></span> Item</a></li>
+                        </ul>
+                    </div>
+                </li>
+-->
+                <li  ng-class="activacionP"><a href="#">Pagos</a>
+                    <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li class="uk-nav-header">Pagos de</li>
+                        <li ng-class="activacion4" ng-click="seleccionar('P_Alumnos')"><a href="#/pago_alumno">Alumnos</a></li>
+                        <li ng-class="activacion5" ng-click="seleccionar('P_Docentes')"><a href="#/pago_docente">Docentes</a></li>
+                    </ul>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+        <div class="uk-navbar-right">
+
+        <ul class="uk-navbar-nav">
+            <li>
+                <a href="#" class="uk-button uk-button-default uk-float-right">{{Nombre_usu}}&nbsp;<span uk-icon="icon:user"></span></a>
+                <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li class="uk-nav-header">Opciones</li>
+                        <li><a href="#"><span uk-icon="icon:pencil"></span> Editar</a></li>
+                        <li ng-class="activacion6" ng-click="seleccionar('Configuracion')"><a href="#/configuracion"><span uk-icon="icon:cog"></span> Configuración</a></li>
+                        <li><a href="#"></a></li>
+                        <li class="uk-nav-divider"></li>
+                        <li><a href="#" ng-click="logout()"><span uk-icon="icon:sign-out"></span> Salir</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    </nav>
+</div>
