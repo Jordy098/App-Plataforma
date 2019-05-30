@@ -27,6 +27,6 @@ angular.module('App').controller('alumnos_matriculaCtrl', ['$scope', '$rootScope
     MyService.data.name = nombre;
     MyService.data.rut = rut;
     console.log(MyService);
-    $location.url("/matriculas");
+    //$location.url("/matriculas");
   };
 }]);

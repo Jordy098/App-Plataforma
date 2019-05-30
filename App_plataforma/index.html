@@ -34,6 +34,13 @@
 	<link href='template/style.css' rel='stylesheet' type='text/css'>
     <link href="css/tabla_mod.css" rel="stylesheet">
     
+    <script src="vendor/jspdf.js"></script>
+    <script src="vendor/pdfFromHTML.js"></script>
+    
+    <!--https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',
+                                        'vendor/jspdf.js',
+                                        'vendor/pdfFromHTML.js'-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
 	<body ng-controller="AppController">
 <!--<a href="#/">Login</a>
@@ -52,7 +59,7 @@
 <script src="js/controller/crear_matricula.js"></script>
 <script src="js/controller/configuracion.js"></script>
 <script src="js/controller/pago_alumno.js"></script>
-<script src="js/controller/pago_docente.js"></script>
+<script src="js/controller/pagar_otros.js"></script>
 <script src="js/controller/alumnos_curso.js"></script>
 <script src="js/controller/sedes.js"></script>
 <script src="js/controller/cursos.js"></script>
@@ -63,7 +70,37 @@
 <script src="js/controller/usuarios.js"></script>
 <script src="js/controller/crear_docente.js"></script>
 <script src="js/controller/crear_boleta.js"></script>
-<script src="js/controller/asignar_curso.js"></script>        
+<script src="js/controller/asignar_curso.js"></script>
+<script src="js/controller/matriculas.js"></script>
+<script src="js/controller/crear_remuneraciones.js"></script>
+<script src="js/controller/pagar_alumno.js"></script>
+<script src="js/controller/editar_docente.js"></script>
+<script src="js/controller/editar_alumno.js"></script>
+<script src="js/controller/eliminar_alumno.js"></script>
+<script src="js/controller/otros_pagos.js"></script>
+<script src="js/controller/otras_boletas.js"></script>
+<script src="js/controller/editar_usuario.js"></script>
+
+<script type="application/javascript">
+var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
+var recognition = new SpeechRecognition();
+
+recognition.lang = "es-ES";
+recognition.continuous = false;
+recognition.interimResults = true;
+
+recognition.onresult = function(event) {
+  for (var i = event.resultIndex; i < event.results.length; i++) {
+    if(event.results[i].isFinal){
+      document.getElementById("text").innerHTML += event.results[i][0].transcript;
+    }
+	}
+}
+recognition.onstart = function(event) { console.log(event); }
+recognition.onerror = function(event) { console.log(event); }
+recognition.onend = function(event) { console.log(event); }
+
+</script>
 <script type="text/javascript">
     var tableToExcel = (function() {
       var uri = 'data:application/vnd.ms-excel;base64,'

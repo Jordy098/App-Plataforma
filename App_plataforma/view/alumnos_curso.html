@@ -19,18 +19,20 @@
             <table class="uk-table .table table-striped .ListaTabla header_fijo" id="testTable" summary="Code page support in different versions of MS Windows." rules="groups">
                 <thead>
                     <tr>
-                        <th>Curso</th>
-                        <th>Nombre</th>
-                        <th>Rut</th>
-                        <th>Correo</th>
+                        <th style="width: 25%">Curso</th>
+                        <th style="width: 28%">Nombre</th>
+                        <th style="width: 30%">Rut</th>
+                        <th style="width: 30%">Correo</th>
+                        <th style="width: 30%">Accion</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="c in Curso_usuarios.cursos | filter:buscar">
-                        <td>{{c.nombre_curso}}</td>
-                        <td>{{c.nombre}}</td>
-                        <td>{{c.rut}}</td>
-                        <td>{{c.correo}}</td>
+                        <td style="width: 25%">{{c.nombre_curso}}</td>
+                        <td style="width: 27.5%">{{c.nombre}}</td>
+                        <td style="width: 30%">{{c.rut}}</td>
+                        <td style="width: 30%">{{c.correo}}</td>
+                        <td style="text-align: right"><a ng-click="eliminar(c.id_curso,c.id_usuario)"><span class="uk-icon-button uk-margin-small-right" uk-icon="icon: trash; ratio: 1" style="color: red;"></span></a></td>
     <!--                    <td><a style="content: \0024;color: green" class="uk-icon-button uk-margin-small-right">&#36;</a></td>-->
                     </tr>
                 </tbody>

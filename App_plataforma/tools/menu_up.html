@@ -14,8 +14,17 @@
                     </div>
                 </li>
                 <li ng-class="activacion2" ng-click="seleccionar('Matriculas')"><a href="#/alumnos_matricula">Matriculas</a></li>
-                <li ng-class="activacion3" ng-click="seleccionar('Boletas')"><a href="#/boletas">Boletas</a></li>
-                <li ng-class="activacion3_5" ng-click="seleccionar('Remunereciones')"><a href="#/remuneraciones">Remunereciones</a></li>
+                <li  ng-class="activacionB"><a href="#">Boletas</a>
+                    <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li class="uk-nav-header">Tipo</li>
+                        <li ng-class="activacion3b" ng-click="seleccionar('Otras_Boletas')"><a href="#/otras_boletas">Comunes</a></li>
+                        <li ng-class="activacion3" ng-click="seleccionar('Boletas')"><a href="#/boletas">Matriculas</a></li>
+                    </ul>
+                    </div>
+                </li>
+                
+                <li ng-class="activacion3_5" ng-click="seleccionar('Remunereciones')"><a href="#/remuneraciones">Remuneraciones</a></li>
 <!--
                 <li>
                     <a href="#">Matriculas</a>
@@ -41,9 +50,9 @@
                 <li  ng-class="activacionP"><a href="#">Pagos</a>
                     <div class="uk-navbar-dropdown">
                     <ul class="uk-nav uk-navbar-dropdown-nav">
-                        <li class="uk-nav-header">Pagos de</li>
-                        <li ng-class="activacion4" ng-click="seleccionar('P_Alumnos')"><a href="#/pago_alumno">Alumnos</a></li>
-                        <li ng-class="activacion5" ng-click="seleccionar('P_Docentes')"><a href="#/pago_docente">Docentes</a></li>
+                        <li class="uk-nav-header">Pagos</li>
+                        <li ng-class="activacion4" ng-click="seleccionar('P_Alumnos')"><a href="#/pago_alumno">Matriculas</a></li>
+                        <li ng-class="activacion5" ng-click="seleccionar('P_Otros')"><a href="#/otros_pagos">Comunes</a></li>
                     </ul>
                     </div>
                 </li>
@@ -58,7 +67,7 @@
                 <div class="uk-navbar-dropdown">
                     <ul class="uk-nav uk-navbar-dropdown-nav">
                         <li class="uk-nav-header">Opciones</li>
-                        <li><a href="#"><span uk-icon="icon:pencil"></span> Editar</a></li>
+                        <li><a href="#editar_usuario"><span uk-icon="icon:pencil"></span> Editar</a></li>
                         <li ng-class="activacion6" ng-click="seleccionar('Configuracion')"><a href="#/configuracion"><span uk-icon="icon:cog"></span> Configuración</a></li>
                         <li><a href="#"></a></li>
                         <li class="uk-nav-divider"></li>

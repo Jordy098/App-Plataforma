@@ -1,0 +1,47 @@
+<ng-include src="'tools/menu_up.html'"></ng-include>
+
+<div class=".section section hero background-light">
+    
+    <div class="container" style="margin-top: -8%">
+        <h2><a href="#/docentes" class="uk-link-heading">Docentes&nbsp;</a>/&nbsp;Editar Docente</h2>
+        <div class="uk-overflow-auto" style="height:500px; overflow:auto;margin-top: 5%">
+
+            <form class="uk-form-horizontal uk-margin-large" style="">
+                <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+                    <div>
+                        <input oninput="checkRut(this)" ng-model="usuario.rut" class="uk-input" id="form-horizontal-text" maxlength="10" type="text" placeholder="Rut" disabled>
+                    </div>
+                    <div>
+                        <input ng-model="usuario.nombre" class="uk-input" id="form-horizontal-text" type="text" placeholder="Nombre">
+                    </div>
+                </div>
+                <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+                    <div>
+                        <input ng-model="usuario.correo" class="uk-input" id="form-horizontal-text" type="text" placeholder="Correo">
+                    </div>
+                    <div style="text-align: left">
+                         <label style="margin-right: 20px">Fecha de Nacimiento</label>
+                        <input id="today" ng-model="usuario.fecha_n" type="text" name="fecha" disabled>
+                    </div>
+                </div>
+                <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+                    <div>
+                        <input ng-model="usuario.ciudad" class="uk-input" id="form-horizontal-text" type="text" placeholder="Ciudad">
+                    </div>
+                    <div>
+                        <input ng-model="usuario.telefono" class="uk-input" id="form-horizontal-text" type="text" placeholder="Telefono">
+                    </div>
+                </div>
+                <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+                    <div>
+                        <input ng-model="usuario.direccion" class="uk-input" id="form-horizontal-text" type="text" placeholder="Dirección">
+                    </div>
+                    <div></div>
+                </div>
+            </form>
+            <div style="text-align: right"><button ng-click="editar()" class="uk-button uk-button-primary" style="background: green">Editar</button></div>
+        </div>
+	</div>
+	<div class="background-image" style="background: url(template/images/hero.jpg) no-repeat center center; background-size: cover; opacity: .2;"></div>
+	
+</div>

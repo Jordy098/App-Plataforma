@@ -22,11 +22,13 @@ App.controller('AppController', ['$scope','$location', function($scope, $locatio
   $scope.seleccionar=function(menu){
       $scope.activacionU="";
       $scope.activacionP="";
+      $scope.activacionB="";
       $scope.activacion0="";
       $scope.activacion="";
       $scope.activacion1="";
       $scope.activacion2="";
       $scope.activacion3="";
+      $scope.activacion3b="";
       $scope.activacion3_5="";
       $scope.activacion4="";
       $scope.activacion5="";
@@ -48,6 +50,11 @@ App.controller('AppController', ['$scope','$location', function($scope, $locatio
       }
       else if(menu=='Boletas'){
           $scope.activacion3="uk-active";
+          $scope.activacionB="uk-active";
+      }
+          else if(menu=='Otras_Boletas'){
+          $scope.activacion3b="uk-active";
+          $scope.activacionB="uk-active";
       }
       else if(menu=='Remunereciones'){
           $scope.activacion3_5="uk-active";
@@ -56,7 +63,7 @@ App.controller('AppController', ['$scope','$location', function($scope, $locatio
           $scope.activacionP="uk-active";
           $scope.activacion4="uk-active";
       }
-      else if(menu=='P_Docentes'){
+      else if(menu=='P_Otros'){
           $scope.activacionP="uk-active";
           $scope.activacion5="uk-active";
       }
@@ -134,6 +141,19 @@ App.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                         }
                         
                     })
+                .state("Editar-Usuario", {
+                        url: "/editar_usuario",
+                        templateUrl: "view/editar_usuario.html",
+                        controller: 'editar_usuarioCtrl',
+                        resolve: { 
+                            "check": function($location, $rootScope){
+                                if(localStorage.getItem('Usuario')==null){
+                                   $location.path('/');
+                                }
+                            }
+                        }
+                        
+                    })
                 .state("Alumnos", {
                         url: "/alumnos",
                         templateUrl: "view/alumnos.html",
@@ -160,7 +180,7 @@ App.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                         }
                         
                     })
-                .state("Alumnos_Matricula", {
+                .state("Alumnos-Matricula", {
                         url: "/alumnos_matricula",
                         templateUrl: "view/alumnos_matricula.html",
                         controller: 'alumnos_matriculaCtrl',
@@ -173,10 +193,49 @@ App.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                         }
                         
                     })
-                .state("Crear_Docente", {
+                .state("Editar-Alumno", {
+                        url: "/editar_alumno",
+                        templateUrl: "view/editar_alumno.html",
+                        controller: 'editar_alumnoCtrl',
+                        resolve: { 
+                            "check": function($location, $rootScope){
+                                if(localStorage.getItem('Usuario')==null){
+                                   $location.path('/');
+                                }
+                            }
+                        }
+                        
+                    })
+                .state("Eliminar-Alumno", {
+                        url: "/eliminar_alumno",
+                        templateUrl: "view/eliminar_alumno.html",
+                        controller: 'eliminar_alumnoCtrl',
+                        resolve: { 
+                            "check": function($location, $rootScope){
+                                if(localStorage.getItem('Usuario')==null){
+                                   $location.path('/');
+                                }
+                            }
+                        }
+                        
+                    })
+                .state("Crear-Docente", {
                         url: "/crear_docente",
                         templateUrl: "view/crear_docente.html",
                         controller: 'crear_docenteCtrl',
+                        resolve: { 
+                            "check": function($location, $rootScope){
+                                if(localStorage.getItem('Usuario')==null){
+                                   $location.path('/');
+                                }
+                            }
+                        }
+                        
+                    })
+                .state("Editar-Docente", {
+                        url: "/editar_docente",
+                        templateUrl: "view/editar_docente.html",
+                        controller: 'editar_docenteCtrl',
                         resolve: { 
                             "check": function($location, $rootScope){
                                 if(localStorage.getItem('Usuario')==null){
@@ -218,23 +277,17 @@ App.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                         url: "/matriculas",
                         templateUrl: "view/matriculas.html",
                         controller: 'matriculasCtrl',
-                        resolve: {
-                        deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-                                return $ocLazyLoad.load({
-                                    name: 'App',
-                                    files: [
-                                        'js/controller/matriculas.js',
-                                        'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',
-                                        'vendor/jspdf.js',
-                                        'vendor/pdfFromHTML.js'
-                                    ]
-                                });
-                            }]
-                    }
+                        resolve: { 
+                            "check": function($location, $rootScope){
+                                if(localStorage.getItem('Usuario')==null){
+                                   $location.path('/');
+                                }
+                            }
+                        }
                         
                     })
                 //---------------------------------------------------------------------------Pagos
-                .state("Pago-Alumno", {
+                .state("Pago-Alumno", {//lista de pagos de matriculas
                         url: "/pago_alumno",
                         templateUrl: "view/pago_alumno.html",
                         controller: 'pago_alumnoCtrl',
@@ -247,10 +300,10 @@ App.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                         }
                         
                     })
-                .state("Pago-Docente", {
-                        url: "/pago_docente",
-                        templateUrl: "view/pago_docente.html",
-                        controller: 'pago_docenteCtrl',
+                .state("Pagar-Alumno", {//pagar matricula
+                        url: "/pagar_alumno",
+                        templateUrl: "view/pagar_alumno.html",
+                        controller: 'pagar_alumnoCtrl',
                         resolve: { 
                             "check": function($location, $rootScope){
                                 if(localStorage.getItem('Usuario')==null){
@@ -260,6 +313,45 @@ App.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                         }
                         
                     })
+                .state("Otros-pagos", {
+                        url: "/otros_pagos",
+                        templateUrl: "view/otros_pagos.html",
+                        controller: 'otros_pagosCtrl',
+                        resolve: { 
+                            "check": function($location, $rootScope){
+                                if(localStorage.getItem('Usuario')==null){
+                                   $location.path('/');
+                                }
+                            }
+                        }
+                        
+                    })
+                .state("Pagar-Otros", {
+                        url: "/pagar_otros",
+                        templateUrl: "view/pagar_otros.html",
+                        controller: 'pagar_otrosCtrl',
+                        resolve: { 
+                            "check": function($location, $rootScope){
+                                if(localStorage.getItem('Usuario')==null){
+                                   $location.path('/');
+                                }
+                            }
+                        }
+                        
+                    })
+//                .state("Pago-Docente", {
+//                        url: "/pago_docente",
+//                        templateUrl: "view/pago_docente.html",
+//                        controller: 'pago_docenteCtrl',
+//                        resolve: { 
+//                            "check": function($location, $rootScope){
+//                                if(localStorage.getItem('Usuario')==null){
+//                                   $location.path('/');
+//                                }
+//                            }
+//                        }
+//                        
+//                    })
                 //---------------------------------------------------------------------------Curso
                 .state("Alumnos-Curso", {
                         url: "/alumnos_curso",
@@ -314,7 +406,20 @@ App.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                         }
                         
                     })
-                .state("Crear_Boleta", {
+                .state("Otras-Boletas", {
+                        url: "/otras_boletas",
+                        templateUrl: "view/otras_boletas.html",
+                        controller: 'otras_boletasCtrl',
+                        resolve: { 
+                            "check": function($location, $rootScope){
+                                if(localStorage.getItem('Usuario')==null){
+                                   $location.path('/');
+                                }
+                            }
+                        }
+                        
+                    })
+                .state("Crear-Boleta", {
                         url: "/crear_boleta",
                         templateUrl: "view/crear_boleta.html",
                         controller: 'crear_boletaCtrl',
@@ -327,6 +432,19 @@ App.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                         }
                         
                     })
+//                .state("Crear-Otra-Boleta", {
+//                        url: "/crear_otra_boleta",
+//                        templateUrl: "view/crear_otra_boleta.html",
+//                        controller: 'crear_otra_boletaCtrl',
+//                        resolve: { 
+//                            "check": function($location, $rootScope){
+//                                if(localStorage.getItem('Usuario')==null){
+//                                   $location.path('/');
+//                                }
+//                            }
+//                        }
+//                        
+//                    })
                 //---------------------------------------------------------------------------Sede
                 .state("Sedes", {
                         url: "/sedes",
@@ -346,6 +464,19 @@ App.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                         url: "/remuneraciones",
                         templateUrl: "view/remuneraciones.html",
                         controller: 'remuneracionesCtrl',
+                        resolve: { 
+                            "check": function($location, $rootScope){
+                                if(localStorage.getItem('Usuario')==null){
+                                   $location.path('/');
+                                }
+                            }
+                        }
+                        
+                    })
+                .state("Crear-Remuneraciones", {
+                        url: "/crear_remuneraciones",
+                        templateUrl: "view/crear_remuneraciones.html",
+                        controller: 'crear_remuneracionesCtrl',
                         resolve: { 
                             "check": function($location, $rootScope){
                                 if(localStorage.getItem('Usuario')==null){

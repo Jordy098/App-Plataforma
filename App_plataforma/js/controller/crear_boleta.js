@@ -18,11 +18,22 @@ angular.module('App').controller('crear_boletaCtrl', ['$scope', '$rootScope','$h
         //alert(fecha);
         x={ accion:"Registo_Boleta",
           n_boleta:$scope.boleta.numero,
+          n_cuotas:1,
           valor_cuota:$scope.boleta.valor_cuota,
           monto_total:$scope.boleta.monto,
           estado:$scope.boleta.estado,
           fecha_inicio:fecha_i,
-          fecha_fin:fecha_f};
+          fecha_fin:fecha_f,
+          usuario_id:null};
+          /*accion:"Registo_Boleta",
+          n_boleta:"1321",
+          n_cuotas:$scope.boleta.planes,
+          valor_cuota:$scope.boleta.valor_cuota,
+          monto_total:$scope.boleta.monto,
+          estado:"Proceso",
+          fecha_inicio:$scope.boleta.primera_cuota,
+          fecha_fin:$scope.boleta.ultima_cuota,
+          usuario_id:$scope.matricula.usuario_id*/
         console.log(JSON.stringify(x));
     $http({
         method : "GET",

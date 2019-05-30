@@ -20,6 +20,14 @@ angular.module('App').controller('asignar_cursoCtrl', ['$scope', '$rootScope','$
             //$scope.Usuarios_matricula=response.statusText;
           });
     
+    $scope.form1 = function() {
+
+      if($scope.form1.$valid) {
+        console.log('Formulario Correcto'+$scope.form1.$valid);
+      }
+
+    };
+    
     $scope.asignar=function(){
         
 //        $scope.asignar.usuario

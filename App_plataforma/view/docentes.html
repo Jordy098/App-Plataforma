@@ -24,17 +24,19 @@
                         <th ng-style="{ 'width' : width_ciudad, 'text-align' : align}">Ciudad</th>
                         <th ng-style="{ 'width' : width_telefono, 'text-align' : align}">Telefonos</th>
                         <th ng-style="{ 'width' : width_direccion, 'text-align' : align}">Direccion</th>
+                        <th ng-style="{ 'width' : width_accion, 'text-align' : align}">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="l in Usuarios | filter:buscar" style="text-align: left">
-                    <td>{{l.rut}}</td>
-                    <td>{{l.nombre}}</td>
-                    <td>{{l.correo}}</td>
-                    <td>{{l.fecha_nacimiento}}</td>
-                    <td>{{l.ciudad}}</td>
-                    <td>{{l.telefono}}</td>
-                    <td>{{l.direccion}}</td>
+                    <td style="width: 15%">{{l.rut}}</td>
+                    <td style="width:11%">{{l.nombre}}</td>
+                    <td style="width:13%">{{l.correo}}</td>
+                    <td style="width:12%">{{l.fecha_nacimiento}}</td>
+                    <td style="width:13%">{{l.ciudad}}</td>
+                    <td style="width:12%">{{l.telefono}}</td>
+                    <td style="width:14%">{{l.direccion}}</td>
+                    <td style="width:14%"><a href="" ng-click="editar(l.id)"><span class="uk-icon-button uk-margin-small-right" uk-icon="icon: pencil; ratio: 2" style="color: green;"></span></a></td>
 <!--                    <td><a style="content: \0024;color: green" class="uk-icon-button uk-margin-small-right">&#36;</a></td>-->
                     </tr>
                 </tbody>

@@ -2,7 +2,7 @@
 
 <div class=".section section hero background-light">
     <div class="container" style="margin-top: -11%">
-        <h2>Pagos de Matriculas</h2>
+        <h2>Pagos Comunes</h2>
         <div class="uk-child-width-1-2 uk-text-center" uk-grid>
                 <div>
                     <div class="uk-inline">
@@ -10,15 +10,13 @@
                                 <input ng-model="buscar" class="uk-input" type="text" placeholder="Buscar">
                     </div>
                     <a style="background: green;" class="uk-button uk-button-danger" onclick="tableToExcel('testTable', 'Cursos')">Excel</a>
-                    <a href="#/pagar_alumno"><span class="uk-icon-button uk-margin-small-right" style="color: green;margin-left: 1%;" uk-icon="icon: plus-circle; ratio: 2"></span></a>
+                    <a href="#/pagar_otros"><span class="uk-icon-button uk-margin-small-right" style="color: green;margin-left: 1%;" uk-icon="icon: plus-circle; ratio: 2"></span></a>
                 </div>
             </div>
         <div class="uk-overflow-auto" style="margin-top: 2%">
             <table class="uk-table .table table-striped .ListaTabla header_fijo" id="testTable" summary="Code page support in different versions of MS Windows." rules="groups">
                 <thead>
                     <tr>
-                        <th style="width: 16.6%">Nombre</th>
-                        <th style="width: 15%">Rut</th>
                         <th style="width: 17%">Valor Pago</th>
                         <th style="width: 20%">Detalle</th>
                         <th style="width: 21%">Fecha</th>
@@ -27,9 +25,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="p in pagos_usuarios.pagos | filter:buscar">
-                        <td style="width: 15%">{{p.nombre}}</td>
-                        <td style="width: 16.6%">{{p.rut}}</td>
-                        <td style="width: 18.5%">{{p.monto}}</td>
+                        <td style="width: 17%">{{p.monto}}</td>
                         <td style="width: 17%">{{p.detalle}}</td>
                         <td style="width: 21.2%">{{p.fecha}}</td>
                         <td style="width: 16.6%">{{p.tipo}}</td>

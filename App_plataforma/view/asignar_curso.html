@@ -6,25 +6,26 @@
         <h2><a href="#/alumnos_curso" class="uk-link-heading">Alumnos en Cursos&nbsp;</a>/&nbsp;Asignar Curso</h2>
         <div class="uk-overflow-auto" style="height:500px; overflow:auto;margin-top: 5%">
 
-            <form class="uk-form-horizontal uk-margin-large" style="">
+            <form name="form1" ng-submit="form1()" class="uk-form-horizontal uk-margin-large" style="">
                 <div class="uk-child-width-expand@s uk-text-center" uk-grid>
                     <div style="text-align: left">
                         <label>Alumno</label>
-                        <select class="uk-select" ng-model="asignar.usuario" id="form-horizontal-select" style="width: 60%">
+                        <select class="uk-select" ng-model="asignar.usuario" id="form-horizontal-select" style="width: 60%" required>
                             <option value="" selected disabled>Seleccione un Alumno</option>
                             <option ng-repeat="u in Usuarios" value="{{u.id}}">{{u.nombre}} {{u.rut}}</option>
                         </select>
                     </div>
                     <div style="text-align: left">
                         <label>Curso</label>
-                        <select class="uk-select" ng-model="asignar.curso" id="form-horizontal-select" style="width: 60%">
+                        <select class="uk-select" ng-model="asignar.curso" id="form-horizontal-select" style="width: 60%" required>
                             <option value="" selected disabled>Seleccione un Curso</option>
                             <option ng-repeat="c in Cursos" value="{{c.id}}">{{c.nombre}}</option>
                         </select>
                     </div>
                 </div>
+                <div style="text-align: right"><button ng-click="asignar()" class="uk-button uk-button-primary" style="background: green">Asignar</button></div>
             </form>
-            <div style="text-align: right"><button ng-click="asignar()" class="uk-button uk-button-primary" style="background: green">Asignar</button></div>
+            
         </div>
 	</div>
 	<div class="background-image" style="background: url(template/images/hero.jpg) no-repeat center center; background-size: cover; opacity: .2;"></div>
