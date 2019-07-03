@@ -9,7 +9,8 @@
                                 <span class="uk-form-icon" uk-icon="icon: search"></span>
                                 <input ng-model="buscar" class="uk-input" type="text" placeholder="Buscar">
                     </div>
-                    <a href="#/crear_matricula"><span class="uk-icon-button uk-margin-small-right" style="color: green;margin-left: 1%;" uk-icon="icon: plus-circle; ratio: 2"></span></a>
+                    <a style="background: green;" class="uk-button uk-button-danger" onclick="tableToExcel('testTable', 'Usuarios')">Excel</a>
+                    <a href="#/crear_usuario"><span class="uk-icon-button uk-margin-small-right" style="color: green;margin-left: 1%;" uk-icon="icon: plus-circle; ratio: 2"></span></a>
                 </div>
             </div>
         <div class="uk-overflow-auto" style="width:100%; max-height:400px; overflow:auto;margin-top: 2%">
@@ -18,42 +19,60 @@
                     <th>Rut</th>
                     <th>Nombre</th>
                     <th>Correo</th>
-                    <th>Fecha Nacimiento</th>
                     <th>Ciudad</th>
                     <th>Telefonos</th>
                     <th>Direccion</th>
                     <th>Roles</th>
+                    <th>Acciones</th>
                 </tr>
-                <tr ng-repeat="u in Usuarios | filter:buscar">
+                <tr dir-paginate="u in Usuarios | filter:buscar | itemsPerPage: 4">
                     <td>{{u.rut}}</td>
                     <td>{{u.nombre}}</td>
                     <td>{{u.correo}}</td>
-                    <td>{{u.fecha_nacimiento}}</td>
                     <td>{{u.ciudad}}</td>
                     <td>{{u.telefono}}</td>
                     <td>{{u.direccion}}</td>
-                    <td ng-show="u.rol_id==1" style="text-align: left"><span class="uk-label uk-label-secondary">SuperUsuario</span></td>
+                    <td ng-if="u.rol_id==1" style="text-align: left"><span class="uk-label uk-label-secondary">SuperUsuario</span></td>
                     <td ng-if="u.rol_id==2" style="text-align: left"><span class="uk-label uk-label-primary">Admin</span></td>
                     <td ng-if="u.rol_id==3" style="text-align: left"><span class="uk-label uk-label-warning">Alumno</span></td>
                     <td ng-if="u.rol_id==4" style="text-align: left"><span class="uk-label uk-label-success">Docente</span></td>
+                    <td style="text-align: right"><a ng-click="editar(u.id,u.rut)"><span class="uk-icon-button uk-margin-small-right" uk-icon="icon: pencil; ratio: 2" style="color: green;"></span></a></td>
                     
 <!--                    <td><a style="content: \0024;color: green" class="uk-icon-button uk-margin-small-right">&#36;</a></td>-->
                 </tr>
             </table>
         </div>
-        <table class="uk-table .table table-striped">
+        <dir-pagination-controls boundary-links="true" 
+			direction-links="true"></dir-pagination-controls>
+	</div>
+    <!--Tabla de Exportación-->
+    <table class="uk-table .table table-striped" id="testTable" style="display: none">
                 <tr>
-                    <th style="width: 114px">Rut</th>
-                    <th style="width: 169px">Nombre</th>
-                    <th style="width: 194px">Correo</th>
-                    <th style="width: 126px">Fecha Nacimiento</th>
+                    <th>Rut</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
                     <th>Ciudad</th>
                     <th>Telefonos</th>
                     <th>Direccion</th>
                     <th>Roles</th>
+                    <th>Acciones</th>
                 </tr>
-        </table>
-	</div>
+                <tr ng-repeat="u in Usuarios | filter:buscar">
+                    <td>{{u.rut}}</td>
+                    <td>{{u.nombre}}</td>
+                    <td>{{u.correo}}</td>
+                    <td>{{u.ciudad}}</td>
+                    <td>{{u.telefono}}</td>
+                    <td>{{u.direccion}}</td>
+                    <td ng-if="u.rol_id==1" style="text-align: left"><span class="uk-label uk-label-secondary">SuperUsuario</span></td>
+                    <td ng-if="u.rol_id==2" style="text-align: left"><span class="uk-label uk-label-primary">Admin</span></td>
+                    <td ng-if="u.rol_id==3" style="text-align: left"><span class="uk-label uk-label-warning">Alumno</span></td>
+                    <td ng-if="u.rol_id==4" style="text-align: left"><span class="uk-label uk-label-success">Docente</span></td>
+                    <td style="text-align: right"><a ng-click="editar(u.id,u.rut)"><span class="uk-icon-button uk-margin-small-right" uk-icon="icon: pencil; ratio: 2" style="color: green;"></span></a></td>
+                    
+<!--                    <td><a style="content: \0024;color: green" class="uk-icon-button uk-margin-small-right">&#36;</a></td>-->
+                </tr>
+    </table>
 	<div class="background-image" style="background: url(template/images/hero.jpg) no-repeat center center; background-size: cover; opacity: .2;"></div>
 	
 </div>

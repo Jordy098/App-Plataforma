@@ -36,7 +36,8 @@ angular.module('App').controller('crear_remuneracionesCtrl', ['$scope', '$rootSc
           url : "http://localhost/web_service_plataforma/Controllers/Remuneraciones/Registro.php?x="+JSON.stringify(x)
           }).then(function mySuccess(response) {
             //console.log("Usuarios"+JSON.stringify(response.data));
-            $scope.Usuarios=response.data.usuarios;
+            //$scope.Usuarios=response.data.usuarios;
+            UIkit.notification(response.data.Resultado, {status:'success'})
           }, function myError(response) {
             //$scope.Usuarios_matricula=response.statusText;
           });

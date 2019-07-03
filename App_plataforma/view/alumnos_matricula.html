@@ -9,13 +9,42 @@
                                 <span class="uk-form-icon" uk-icon="icon: search"></span>
                                 <input ng-model="buscar" class="uk-input" type="text" placeholder="Buscar">
                     </div>
-                    <a style="background: green;" class="uk-button uk-button-danger" onclick="tableToExcel('testTable', 'Cursos')">Excel</a>
+                    <a style="background: green;" class="uk-button uk-button-danger" onclick="tableToExcel('testTable', 'Matriculas')">Excel</a>
                     <a href="#/crear_matricula"><span class="uk-icon-button uk-margin-small-right" style="color: green;margin-left: 1%;" uk-icon="icon: plus-circle; ratio: 2"></span></a>
 <!--                    <a ng-click="matriculas('19175283-k','Jordy')">hola</a>-->
                 </div>
             </div>
         <div class="uk-overflow-auto" style="margin-top: 2%">
-            <table class="uk-table .table table-striped .ListaTabla header_fijo" id="testTable" summary="Code page support in different versions of MS Windows." rules="groups">
+            <table class="uk-table .table table-striped" >
+                <thead>
+                    <tr>
+                        <th style="width: 25%">Rut</th>
+                        <th style="width: 25%">Nombre</th>
+                        <th style="width: 25%">Correo</th>
+                        <th style="width: 25%">Estado</th>
+                        <th style="width: 25%">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr dir-paginate="l in Usuarios_matricula.matriculas | filter:buscar | itemsPerPage: 5">
+                        <td style="width: 24%">{{l.rut}}</td>
+                        <td style="width: 23.5%">{{l.nombre}}</td>
+                        <td style="width: 25%">{{l.correo}}</td>
+                        <td style="width: 25%">{{l.estado}}</td>
+                        <td style="width: 25%;text-align: center">
+                        <a ng-href="http://localhost/web_service_plataforma/Subidas/{{l.id}}/{{l.url}}" target="_blank" ng-if='l.url!="" && l.estado=="Matricula"'><span class="label label-success">matricula</span></a> <a ng-href="http://localhost/web_service_plataforma/Subidas/{{l.id}}/{{l.url_compromiso}}" target="_blank" ng-if='l.url_compromiso!="" && l.estado=="Matricula"'><span class="label label-primary">compromiso</span></a>
+                        <!--<a ng-click="matriculas(l.nombre, l.rut)" ng-if='l.estado=="Pre-Matricula"' style="color: green"><span style="color: green;" class="uk-icon-button uk-margin-small-right">&#36;</span>pagar</a>-->
+                        </td>
+    <!--                    <td><a style="content: \0024;color: green" class="uk-icon-button uk-margin-small-right">&#36;</a></td>-->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <dir-pagination-controls boundary-links="true" 
+			direction-links="true"></dir-pagination-controls>
+	</div>
+    <!--Tabla de exportación-->
+    <table class="uk-table .table table-striped" id="testTable"  style="display: none">
                 <thead>
                     <tr>
                         <th style="width: 25%">Rut</th>
@@ -32,16 +61,13 @@
                         <td style="width: 25%">{{l.correo}}</td>
                         <td style="width: 25%">{{l.estado}}</td>
                         <td style="width: 25%;text-align: center">
-                        <a ng-click="matriculas(l.nombre, l.rut)" ng-if='l.estado=="Matriculado"'><span class="label label-success">matricula</span></a> <a ng-click="matriculas(l.nombre, l.rut)" ng-if='l.estado=="Matriculado"'><span class="label label-primary">compromiso</span></a>
+                        <a ng-click="matriculas(l.nombre, l.rut)" ng-if='l.estado=="Matricula"'><span class="label label-success">matricula</span></a> <a ng-click="matriculas(l.nombre, l.rut)" ng-if='l.estado=="Matricula"'><span class="label label-primary">compromiso</span></a>
                         <!--<a ng-click="matriculas(l.nombre, l.rut)" ng-if='l.estado=="Pre-Matricula"' style="color: green"><span style="color: green;" class="uk-icon-button uk-margin-small-right">&#36;</span>pagar</a>-->
                         </td>
     <!--                    <td><a style="content: \0024;color: green" class="uk-icon-button uk-margin-small-right">&#36;</a></td>-->
                     </tr>
                 </tbody>
-                
-            </table>
-        </div>
-	</div>
+    </table>
 	<div class="background-image" style="background: url(template/images/hero.jpg) no-repeat center center; background-size: cover; opacity: .2;"></div>
 	
 </div>

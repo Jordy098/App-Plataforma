@@ -1,4 +1,4 @@
-angular.module('App').controller('sedesCtrl', ['$scope', '$rootScope','$http', function ($scope, $rootScope,$http) {
+angular.module('App').controller('sedesCtrl', ['$scope', '$rootScope','$http','MyService','$location', function ($scope, $rootScope,$http,MyService,$location) {
     x={ accion:"Listar_Sedes"};
     $http({
         method : "GET",
@@ -9,4 +9,9 @@ angular.module('App').controller('sedesCtrl', ['$scope', '$rootScope','$http', f
           }, function myError(response) {
             //$scope.Usuarios_matricula=response.statusText;
           });
+    $scope.editar=function(id){
+        //alert("wena"+usu.rut);
+        MyService.data.id=id;
+        $location.url("/editar_sede");
+    }
 }]);

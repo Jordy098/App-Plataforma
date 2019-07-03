@@ -26,6 +26,7 @@ angular.module('App').controller('loginCtrl', ['$scope', '$rootScope', function 
                session.Nombre=data.nombre;
                session.Rol=data.rol;
                session.Id=data.id;
+               session.Rut=data.rut;
                console.log(JSON.stringify(session));
                localStorage.setItem('Usuario', JSON.stringify(session));
                location.href ="#/inicio";

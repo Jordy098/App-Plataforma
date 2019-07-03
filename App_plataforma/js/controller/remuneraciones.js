@@ -1,4 +1,5 @@
 angular.module('App').controller('remuneracionesCtrl', ['$scope', '$rootScope','$http', function ($scope, $rootScope,$http) {
+    
     var x={ accion:"Listar_Remuneraciones"};
     $http({
         method : "GET",

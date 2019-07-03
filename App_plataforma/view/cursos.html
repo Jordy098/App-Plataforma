@@ -10,30 +10,55 @@
                                 <span class="uk-form-icon" uk-icon="icon: search"></span>
                                 <input ng-model="buscar" class="uk-input" type="text" placeholder="Buscar">
                     </div>
-<!--                    <a style="background: green;" class="uk-button uk-button-danger" onclick="tableToExcel('testTable', 'Cursos')">Excel</a>-->
-                    <a href="#/"><span class="uk-icon-button uk-margin-small-right" style="color: green;margin-left: 1%;" uk-icon="icon: plus-circle; ratio: 2"></span></a>
+                    <a style="background: green;" class="uk-button uk-button-danger" onclick="tableToExcel('testTable', 'Cursos_Admin')">Excel</a>
+                    <a href="#/crear_curso"><span class="uk-icon-button uk-margin-small-right" style="color: green;margin-left: 1%;" uk-icon="icon: plus-circle; ratio: 2"></span></a>
                 </div>
             </div>
         <div class="uk-overflow-auto" style="margin-top: 2%">
-            <table class="uk-table .table table-striped .ListaTabla header_fijo" id="testTable" summary="Code page support in different versions of MS Windows." rules="groups">
+            <table class="uk-table .table table-striped">
             <thead>
                 <tr>
                     <th>Id</th>
                     <th>Curso</th>
                     <th>Estado</th>
+                    <th>Editar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr dir-paginate="c in Cursos | filter:buscar | itemsPerPage: 5">
+                    <td>{{c.id}}</td>
+                    <td>{{c.nombre}}</td>
+                    <td ng-if="c.estado==1"><span ng-click="cambio_estado(c.id,c.estado)" class="uk-icon-button uk-margin-small-right" uk-icon="icon: lock; ratio: 1" style="color: red"></span><span class="uk-label uk-label-success">Activo</span></td>
+                    <td ng-if="c.estado==0"><span ng-click="cambio_estado(c.id,c.estado)" class="uk-icon-button uk-margin-small-right" uk-icon="icon: unlock; ratio: 1" style="color: green"></span><span class="uk-label uk-label-danger">Inactivo</span></td>
+<!--                    <td><a style="content: \0024;color: green" class="uk-icon-button uk-margin-small-right">&#36;</a></td>-->
+                    <td><a ng-click="editar(c.id)"><span class="uk-icon-button uk-margin-small-right" uk-icon="icon: pencil; ratio: 2" style="color: green;"></span></a></td>
+                </tr>
+            </tbody>  
+            </table>
+        </div>
+        <dir-pagination-controls boundary-links="true" 
+			direction-links="true"></dir-pagination-controls>
+	</div>
+    <!--Tabla de Exportación-->
+    <table class="uk-table .table table-striped" id="testTable" style="display: none">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Curso</th>
+                    <th>Estado</th>
+                    <th>Editar</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="c in Cursos | filter:buscar">
                     <td>{{c.id}}</td>
                     <td>{{c.nombre}}</td>
-                    <td ng-if="c.estado==1" style="text-align: left"><span class="uk-label uk-label-success">Disponible</span></td>
-<!--                    <td><a style="content: \0024;color: green" class="uk-icon-button uk-margin-small-right">&#36;</a></td>-->
+                    <td ng-if="c.estado==1"><span ng-click="cambio_estado(c.id,c.estado)" class="uk-icon-button uk-margin-small-right" uk-icon="icon: lock; ratio: 1" style="color: red"></span><span class="uk-label uk-label-success">Activo</span></td>
+                    <td ng-if="c.estado==0"><span ng-click="cambio_estado(c.id,c.estado)" class="uk-icon-button uk-margin-small-right" uk-icon="icon: unlock; ratio: 1" style="color: green"></span><span class="uk-label uk-label-danger">Inactivo</span></td>
+                    <td><a ng-click="editar(c.id)"><span class="uk-icon-button uk-margin-small-right" uk-icon="icon: pencil; ratio: 2" style="color: green;"></span></a></td>
                 </tr>
-            </tbody>  
-            </table>
-        </div>
-	</div>
+            </tbody>
+        </table>
 	<div class="background-image" style="background: url(template/images/hero.jpg) no-repeat center center; background-size: cover; opacity: .2;"></div>
 	
 </div>

@@ -41,24 +41,24 @@
 
 <div id="imprimir2">
     <img src="/img/head2.png" style="margin-left: 250px;visibility: hidden" width="550">
-    <div style="display: none">
+    <div ><!--style="display: none"-->
     <p>______________________________________________________________________</p>
     <p style="text-align: center;"><B>PAGARE A LA ORDEN</B><br>______________________________________________________________________</p>
-    <div style="font-size: 11px"><p>SUSCRIPTOR:  SAMUEL ELIAS SEPULVEDA VIVANCO
-Debo y pagaré a la orden de Centro de Capacitacion Empowerment . Institución educacional, persona natural de derecho privado, Rut. 76.6696.674-8  la suma de $ 300.0000      pesos, del curso ASISTENTE ADMINISTRATIVO CONTABLE  y sera cancelado en la siguiente modalidad: 6 cuotas iguales mensuales y sucesivas de $ 50,000 pesos, cantidad en letras Cincuenta Mil  pesos y 1 cuota de $ 30,000 pesos, cantidad en letra Treinta Mil  pesos por  concepto de Certificación.
+    <div style="font-size: 11px"><p>SUSCRIPTOR:  {{nombre_alumno}}
+Debo y pagaré a la orden de Centro de Capacitacion Empowerment . Institución educacional, persona natural de derecho privado, Rut. 76.6696.674-8  la suma de $ {{valor_curso}}      pesos, del curso {{curso}}  y sera cancelado en la siguiente modalidad: {{n_cuotas}} cuotas iguales mensuales y sucesivas de $ {{valor_cuota}} pesos, cantidad en letras {{valor_cuota_letras}} por  concepto de Certificación.
 </p>
-    <p>Venciendo la primera cuota el día de 05-03-2019 y última cuota el día 05-08-2019, las demás el mismo día de los sucesivos meses siguientes correspondiente al arancel y con fecha 30-08-2019  a la cuota de certificación, hasta la extinción total de la obligación.</p>
+    <p>Venciendo la primera cuota el día de {{fecha_inicio}} y última cuota el día {{fecha_final}}, las demás el mismo día de los sucesivos meses siguientes correspondiente al arancel y con fecha {{certificacion}}  a la cuota de certificación, hasta la extinción total de la obligación.</p>
     <p>En el caso de mora o simple retardo en el pago de una cualquiera de las cuotas este pagare devengará sobre el monto de la cuota vencida y adeudada el máximo de interés que la ley permite estipular, por todo el tiempo de la mora o retardo. Si la mora o simple retardo durare más de 10 días calendario, este pagaré se considerará en su totalidad como de plazo vencido para todos lo efectos legales pudiendo ser protestado de inmediato y devengará el interés máximo que la ley permite estipular sobre el saldo de capital adeudado. Se deja expresamente establecido que corresponderá al deudor acreditar el pago de las cuotas en que se divide el presente instrumento en caso de cobro judicial.</p>
     <p>La obligación de que da cuenta este pagaré es indivisible y podrá, en consecuencia, cobrarse en su totalidad, a cualquiera de los herederos del deudor.</p>
     <p>Para todos los efectos legales de este pagaré, fijo mi domicilio en esta ciudad y me someto a la jurisdicción de los tribunales de esta ciudad.</p>
     <p>Para el caso de no pago del pagaré suscrito o en caso de simple retardo o mora en el cumplimiento de las obligaciones contraídas, autorizamos al representante legal, para ingresar los datos personales y antecedentes del protesto o incumplimiento de un sistema de información comercial, facultando expresamente, su digitación, procesamiento tratamiento y comunicación en línea o cualquier otra forma y libere desde ya a Centro de Capacitacion Empowerment SPA. De dar aviso de pago o extinción de deuda, previo otorgamiento de constancia suficiente del pago de la deuda correspondiente, según lo dispuesto en la ley "19.628".</p>
-    <p>En Valdivia , 16 de Marzo de 2019.</p>
-    <p>SUSCRIPTOR	: SAMUEL ELIAS SEPULVEDA</p>
-    <p>RUT : 18.590.694-9</p>
-    <p>DIRECCIÓN	: YECO SN SAN JOSE</p>
-    <p>TELEFONO	: 954465287</p>
-    <p>E-MAIL	: MECHNNER@GMAIL.COM</p>
-    <p style="text-align: center;padding-top: 15px">_____________________________</p>
+    <p>En Valdivia , {{fecha}}.</p>
+    <p>SUSCRIPTOR	: {{nombre_alumno}}</p>
+    <p>RUT : {{rut_alumno}}</p>
+    <p>DIRECCIÓN	: {{direccion_alumno}}</p>
+    <p>TELEFONO	: {{telefono}}</p>
+    <p>E-MAIL	: {{correo}}</p>
+    <p style="text-align: center;padding-top: 7px">_____________________________</p>
     <p style="text-align: center">FIRMA / HUELLA</p>
     </div>
     </div>
@@ -66,9 +66,9 @@ Debo y pagaré a la orden de Centro de Capacitacion Empowerment . Institución e
 
 <div id="imprimir">
     <div style="width: 500px"></div><img src="/img/head3.png" width="550" height="500">
-    <p style="text-align: center;"><B>CONTRARTO</B><br></p>
-    <div style="font-size: 11px"><p><b>YO  SAMUEL ELIAS SEPULVEDA VIVANCO   . RUT 18.590.694-9
-    DIRECCION         YECO SN       SAN JOSE DE LA MARIQUINA</b>
+    <p style="text-align: center;"><B>CONTRATO</B><br></p>
+    <div style="font-size: 11px"><p><b>YO  {{nombre_alumno}}   . RUT {{rut_alumno}}
+    DIRECCION         {{direccion_alumno}}</b>
     En este acto con fecha matrícula    {{fecha}}              declaro conocer y aceptar las siguientes
     </p>
     <p>1.- Todo alumno deberá cumplir un mínimo de asistencia equivalente al 75% del total de clases efectivamente realizadas por módulo. Si no cumpliese esta exigencia, podrá ser eliminado del curso. Debiendo pagar la totalidad del mismo. No serán eliminados aquellos alumnos cuya inasistencia sea debidamente justificada por sus apoderados. </p>
@@ -85,20 +85,10 @@ Debo y pagaré a la orden de Centro de Capacitacion Empowerment . Institución e
             <th>VALOR</th>
             <th>VENCIMIENTO</th>
         </tr>
-        <tr>
-            <td>Cuota1</td>
-            <td>$50.000</td>
-            <td>05-03-19</td>
-        </tr>
-        <tr>
-            <td>Cuota2</td>
-            <td>$50.000</td>
-            <td>05-04-19</td>
-        </tr>
-        <tr>
-            <td>Cuota3</td>
-            <td>$50.000</td>
-            <td>05-05-19</td>
+        <tr ng-repeat="f in lista_fechas">
+            <td>{{f.n_cuota}}</td>
+            <td>{{valor_cuota}}</td>
+            <td>{{f.fecha}}</td>
         </tr>
     </table>
     <br>

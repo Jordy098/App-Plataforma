@@ -1,0 +1,43 @@
+<ng-include src="'tools/menu_up.html'"></ng-include>
+
+<div class=".section section hero background-light">
+    
+    <div class="container" style="margin-top: -10%">
+        <h2><a href="#/alumnos" class="uk-link-heading">Alumnos&nbsp;</a>/&nbsp;Detalles de Pagos</h2>
+
+        <div style="height:500px; overflow:auto;margin-top: 5%">
+
+            <div class="uk-form-horizontal uk-margin-large" style="">
+                <div ng-if="Boletas.length==0" class="alert alert-warning" role="alert">El usuario no tiene ninguna boleta</div>
+                
+                <div class="uk-child-width-expand@s uk-text-center" ng-repeat="b in Boletas" uk-grid>
+                    <div class="panel panel-default">
+                        <div class="panel-body" style="text-align: left" ng-click="">
+                        N° Boleta: {{b.n_boleta}} <span class="label label-primary">N° Cuotas: {{b.cuotas}}</span> <span ng-if="b.estado=='Proceso'" class="label label-warning">{{b.estado}}</span><span ng-if="b.estado!='Proceso'" class="label label-success">{{b.estado}}</span> <b style="margin-left: 80%">TOTAL: ${{b.monto_total}}</b>
+                        </div>
+                        <div class="panel-footer" >
+                            <table class="table table-striped" >
+                                <tr>
+                                    <th>Detalle</th>
+                                    <th>Monto</th>
+                                    <th>Fecha</th>
+                                    <th>Tipo</th>
+                                </tr>
+                                <tr style="text-align: left" ng-repeat="p in pagos_usuarios">
+                                    <td ng-if="p.boleta_id==b.id">{{p.detalle}}</td>
+                                    <td ng-if="p.boleta_id==b.id">{{p.monto}}</td>
+                                    <td ng-if="p.boleta_id==b.id">{{p.fecha}}</td>
+                                    <td ng-if="p.boleta_id==b.id">{{p.tipo}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--Fin Alumno-->
+            </div>
+            
+        </div>
+	</div>
+	<div class="background-image" style="background: url(template/images/hero.jpg) no-repeat center center; background-size: cover; opacity: .2;"></div>
+	
+</div>

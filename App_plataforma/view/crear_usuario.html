@@ -1,0 +1,77 @@
+<ng-include src="'tools/menu_up.html'"></ng-include>
+
+<div class=".section section hero background-light">
+    
+    <div class="container" style="margin-top: -10%">
+        <h2><a href="#/usuarios" class="uk-link-heading">Usuarios&nbsp;</a>/&nbsp;Registro Usuario</h2>
+
+        <div style="height:500px; overflow:auto;margin-top: 5%">
+
+            <form name="form1" ng-submit="registro()" class="uk-form-horizontal uk-margin-large" style="">
+                <h3><b>Usuario</b>
+                    <label class="switch" uk-tooltip="title: Creación Rapida; pos: right" style="margin-left: 5px">
+                      <input id="cambio" type="checkbox" ng-click="switch()" >
+                      <span class="slider round"></span>
+                    </label>
+                </h3>
+                
+                <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+                    <div>
+                        <input oninput="checkRut(this)" ng-model="usuario.rut" class="uk-input" id="form-horizontal-text" maxlength="10" type="text" placeholder="*Rut" autocomplete="off" required>
+                    </div>
+                    <div>
+                        <input class="uk-input" id="form-horizontal-text" type="text" ng-model="usuario.nombre" placeholder="*Nombre" autocomplete="off" required>
+                    </div>
+                    <div style="text-align: left" ng-hide="sw">
+                        <label>Fecha Nacimiento</label>
+                        <input type="date" name="fecha" ng-model="usuario.fecha_n" required>
+                    </div>
+                    
+                </div>
+                <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+                    <div>
+                        <input class="uk-input" id="form-horizontal-text" type="email" ng-model="usuario.correo" placeholder="*Correo"  autocomplete="off" required>
+                    </div>
+                     <div>
+                         <input class="uk-input" id="form-horizontal-text" type="password" ng-model="usuario.clave" placeholder="*Clave" required>
+                    </div>
+                    <div ng-hide="sw">
+                        <input class="uk-input" ng-model="usuario.ciudad" id="form-horizontal-text" type="text" placeholder="Ciudad" autocomplete="off" >
+                    </div>
+                </div>
+                <div class="uk-child-width-expand@s uk-text-center" ng-hide="sw" uk-grid>
+                    <div >
+                        <input class="uk-input" id="form-horizontal-text" ng-model="usuario.telefono" type="phone" placeholder="Telefono" autocomplete="off" >
+                    </div>
+                     <div >
+                        <input class="uk-input" id="form-horizontal-text" ng-model="usuario.direccion" type="text" placeholder="Direccion" autocomplete="off" >
+                    </div>
+                    <div></div>
+                    
+                </div>
+                <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+                    
+                    <div>
+                        <select class="uk-select" ng-model="usuario.rol_id" id="form-horizontal-select" style="width: 100%" required>
+                            <option value="" selected disabled>Seleccione Rol</option>
+                            <option value="{{r.id}}"  ng-repeat="r in Roles">{{r.nombre}}</option>
+                        </select>
+                    </div>
+                    <div>
+                        <select class="uk-select" ng-model="usuario.sede_id" id="form-horizontal-select" style="width: 100%" required>
+                            <option value="" selected disabled>Seleccione Sede</option>
+                            <option value="{{s.id}}"  ng-repeat="s in Sedes">{{s.nombre}}</option>
+                        </select>
+                    </div>
+                    <div ng-hide="sw">
+                    </div>
+                </div>
+                <!--Fin Alumno-->
+                <div style="text-align: right;margin-top: 3.5%"><button type="submit" class="uk-button uk-button-primary" style="background: green">Registrar</button></div>
+            </form>
+            
+        </div>
+	</div>
+	<div class="background-image" style="background: url(template/images/hero.jpg) no-repeat center center; background-size: cover; opacity: .2;"></div>
+	
+</div>

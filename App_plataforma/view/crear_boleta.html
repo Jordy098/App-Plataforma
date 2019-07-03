@@ -9,15 +9,15 @@
             <form name="boletaForm" ng-submit="crearBoleta()" class="uk-form-horizontal uk-margin-large">
                 <div class="uk-child-width-expand@s uk-text-center" uk-grid>
                     <div>
-                        <input ng-model="boleta.numero" class="uk-input" id="form-horizontal-text" ng-required="!boleta.numero" type="number" placeholder="Numero Boleta">
+                        <input ng-model="boleta.numero" class="uk-input" id="form-horizontal-text" ng-required="!boleta.numero" type="number" placeholder="Numero Boleta" autocomplete="off">
                     </div>
                     <div>
-                        <input ng-model="boleta.valor_cuota" class="uk-input" id="form-horizontal-text" type="text" ng-required="!boleta.valor_cuota" placeholder="Valor Cuota">
+                        <input ng-model="boleta.valor_cuota" class="uk-input" id="form-horizontal-text" type="text" ng-required="!boleta.valor_cuota" placeholder="Valor Cuota" autocomplete="off">
                     </div>
                 </div>
                 <div class="uk-child-width-expand@s uk-text-center" uk-grid>
                     <div>
-                        <input ng-model="boleta.monto" class="uk-input" id="form-horizontal-text" type="text" ng-required="!boleta.monto" placeholder="Monto Total">
+                        <input ng-model="boleta.monto" class="uk-input" id="form-horizontal-text" type="text" ng-required="!boleta.monto" placeholder="Monto Total" autocomplete="off">
                     </div>
                     <div>
                         <label>Estado</label>

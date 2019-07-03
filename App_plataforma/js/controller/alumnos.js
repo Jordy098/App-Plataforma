@@ -1,5 +1,5 @@
 angular.module('App').controller('alumnosCtrl', ['$scope', '$rootScope','$http','MyService','$location', function ($scope, $rootScope,$http,MyService,$location) {
-   $scope.width_rut='12%';
+   $scope.width_rut='15%';
     $scope.width_nombre="12%";
     $scope.width_correo="19%";
     $scope.width_fecha="13%";
@@ -7,7 +7,8 @@ angular.module('App').controller('alumnosCtrl', ['$scope', '$rootScope','$http',
     $scope.width_telefono="12%";
     $scope.width_direccion="12%";
     $scope.width_acccion="12%";
-    $scope.align="";
+    
+    
     x={ accion:"Listar_Alumnos"};
     $http({
         method : "GET",
@@ -36,6 +37,11 @@ angular.module('App').controller('alumnosCtrl', ['$scope', '$rootScope','$http',
                $location.url("/editar_alumno");
             }
         }
+    }
+    
+    $scope.detalles=function(id){
+        MyService.data.id=id;
+        $location.url("detalle_pagos");
     }
     /*x={ accion:"Listar_Usuarios"};
     $http({

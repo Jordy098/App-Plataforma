@@ -13,35 +13,81 @@
 <!--                    <a href="#/crear_alumnos"><span class="uk-icon-button uk-margin-small-right" style="color: green;margin-left: 1%;" uk-icon="icon: plus-circle; ratio: 2"></span></a>-->
                 </div>
             </div>
-        <div class="uk-overflow-auto" style="margin-top: 2%">
-            <table class="uk-table .table table-striped .ListaTabla header_fijo" id="testTable" summary="Code page support in different versions of MS Windows." rules="groups">
+        
+        <div class="uk-overflow-auto" style="width:100%; max-height:400px; overflow:auto;margin-top: 2%">
+            <table class="uk-table .table table-striped">
                 <thead>
                 <tr>
-                    <th ng-style="{ 'width' : width_rut, 'text-align' : align}">Rut</th>
-                    <th ng-style="{ 'width' : width_nombre, 'text-align' : align}">Nombre</th>
-                    <th ng-style="{ 'width' : width_correo, 'text-align' : align}">Correo</th>
-                    <th ng-style="{ 'width' : width_fecha, 'text-align' : align}">Fecha Nacimiento</th>
-                    <th ng-style="{ 'width' : width_ciudad, 'text-align' : align}">Ciudad</th>
-                    <th ng-style="{ 'width' : width_telefono, 'text-align' : align}">Telefonos</th>
-                    <th ng-style="{ 'width' : width_direccion, 'text-align' : align}">Direccion</th>
-                    <th ng-style="{ 'width' : width_accion, 'text-align' : align}">Accion</th>
+                    <th>Rut</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+<!--                   10%">Fecha Nacimiento</th>-->
+                    <th>Ciudad</th>
+                    <th>Telefonos</th>
+                    <th>Direccion</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr dir-paginate="l in Usuarios | filter:buscar | itemsPerPage: 5">
+                    <td>{{l.rut}}</td>
+                    <td>{{l.nombre}}</td>
+                    <td>{{l.correo}}</td>
+<!--                   10%">{{l.fecha_nacimiento}}</td>-->
+                    <td>{{l.ciudad}}</td>
+                    <td>{{l.telefono}}</td>
+                    <td>{{l.direccion}}</td>
+                    <td><a ng-click="editar(l.id)"><span class="uk-icon-button uk-margin-small-right" uk-icon="icon: pencil; ratio: 2" style="color: green;" uk-tooltip="title: Editar; pos: right"></span></a> <a ng-click="detalles(l.id)" style="content: \0024;color: orange;font-size:24px" class="uk-icon-button uk-margin-small-right" uk-tooltip="title: Detalles de Pagos; pos: right">&#36;</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <dir-pagination-controls boundary-links="true" 
+			direction-links="true"></dir-pagination-controls>
+<!--
+        <nav aria-label="Page navigation">
+          <ul class="pagination">
+            <li>
+              <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li ng-repeat="p in num_pag"><a id="n_{{p.numero}}" ng-click="cambio_pagina(p.numero)">{{p.numero}}</a></li>
+            <li>
+              <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>-->
+            <!--tabla para Exportación-->
+           <table class="uk-table .table table-striped" id="testTable" style="display: none">
+                <thead>
+                <tr>
+                    <th>Rut</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+<!--                   10%">Fecha Nacimiento</th>-->
+                    <th>Ciudad</th>
+                    <th>Telefonos</th>
+                    <th>Direccion</th>
+                    <th>Accion</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat="l in Usuarios | filter:buscar">
                     <td>{{l.rut}}</td>
-                    <td style="width: 13%">{{l.nombre}}</td>
-                    <td style="text-align: left">{{l.correo}}</td>
-                    <td style="width: 14%">{{l.fecha_nacimiento}}</td>
-                    <td style="width: 13%">{{l.ciudad}}</td>
-                    <td  style="text-align: right">{{l.telefono}}</td>
-                    <td style="text-align: center">{{l.direccion}}</td>
-                    <td style="text-align: right"><a ng-click="editar(l.id)"><span class="uk-icon-button uk-margin-small-right" uk-icon="icon: pencil; ratio: 2" style="color: green;"></span></a></td>
+                    <td>{{l.nombre}}</td>
+                    <td>{{l.correo}}</td>
+<!--                   10%">{{l.fecha_nacimiento}}</td>-->
+                    <td>{{l.ciudad}}</td>
+                    <td>{{l.telefono}}</td>
+                    <td>{{l.direccion}}</td>
+                    <td><a ng-click="editar(l.id)"><span class="uk-icon-button uk-margin-small-right" uk-icon="icon: pencil; ratio: 2" style="color: green;"></span></a></td>
 <!--                    <td><a style="content: \0024;color: green" class="uk-icon-button uk-margin-small-right">&#36;</a></td>-->
                 </tr>
                 </tbody>
             </table>
-        </div>
 	</div>
 	<div class="background-image" style="background: url(template/images/hero.jpg) no-repeat center center; background-size: cover; opacity: .2;"></div>
 	

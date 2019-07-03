@@ -5,6 +5,7 @@ angular.module('App').controller('alumnos_matriculaCtrl', ['$scope', '$rootScope
           url : "http://localhost/web_service_plataforma/Controllers/Matriculas/Listar_Matriculas.php?x="+JSON.stringify(x)
           }).then(function mySuccess(response) {
             $scope.Usuarios_matricula=response.data;
+            console.log($scope.Usuarios_matricula);
           }, function myError(response) {
             $scope.Usuarios_matricula=response.statusText;
           });
@@ -22,11 +23,11 @@ angular.module('App').controller('alumnos_matriculaCtrl', ['$scope', '$rootScope
 //                $rootScope.Usuarios_matricula=data;
 //        });
 //    }
-    $scope.matriculas = function(nombre,rut) {
-    console.log("nombre "+ nombre);
-    MyService.data.name = nombre;
-    MyService.data.rut = rut;
-    console.log(MyService);
+    $scope.matriculas = function(id,nombre) {
+    console.log("id Matricula "+ id+" "+nombre);
+    //MyService.data.name = nombre;
+    //MyService.data.rut = rut;
+    //console.log(MyService);
     //$location.url("/matriculas");
   };
 }]);

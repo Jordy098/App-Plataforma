@@ -1,4 +1,4 @@
-angular.module('App').controller('pagar_otrosCtrl', ['$scope', '$rootScope','$http', function ($scope, $rootScope,$http) {
+angular.module('App').controller('pagar_otrosCtrl', ['$scope', '$rootScope','$http','$location', function ($scope, $rootScope,$http,$location) {
      $scope.pago={};
     $scope.pago.accion="Registo_Pago";
     $scope.pago.boleta="";
@@ -9,7 +9,8 @@ angular.module('App').controller('pagar_otrosCtrl', ['$scope', '$rootScope','$ht
     $scope.pago.matricula="no";
     $scope.matricula_id="";
     
-    x={ accion:"Listar_Boletas_Pendientes_Otros"};
+    $scope.listar_boletas=function(){
+        x={ accion:"Listar_Boletas_Pendientes_Otros"};
     $http({
         method : "GET",
           url : "http://localhost/web_service_plataforma/Controllers/Boletas/Listar_Boletas.php?x="+JSON.stringify(x)
@@ -21,6 +22,8 @@ angular.module('App').controller('pagar_otrosCtrl', ['$scope', '$rootScope','$ht
           }, function myError(response) {
             //$scope.Usuarios_matricula=response.statusText;
           });
+    }
+    $scope.listar_boletas();
     $scope.prueba=function(id){
         console.log("hola"+id);
     }
@@ -61,14 +64,16 @@ angular.module('App').controller('pagar_otrosCtrl', ['$scope', '$rootScope','$ht
                   }).then(function mySuccess(response) {
                     console.log(response);
                     //console.log("boletas"+JSON.stringify(response.data));
-                    UIkit.notification(response.data.Resultado, {status:'success'})
+                    //UIkit.notification(response.data.Resultado, {status:'success'})
                     Swal.fire({
                           type: 'success',
                           title: response.data.Resultado,
                           showConfirmButton: false,
-                          timer: 1500
+                          timer: 2000
                     })
                     $scope.finalizar_boleta_matricula();
+                    $scope.listar_boletas();
+                    $location.url("/otros_pagos");
                     $scope.pago.boleta="";
                     $scope.pago.valor_pago="";
                     $scope.pago.detalle="";
@@ -102,13 +107,14 @@ angular.module('App').controller('pagar_otrosCtrl', ['$scope', '$rootScope','$ht
                   }).then(function mySuccess(response) {
                     console.log(response);
                     //console.log("boletas"+JSON.stringify(response.data));
-                    UIkit.notification(response.data.Resultado, {status:'success'})
+                    //UIkit.notification(response.data.Resultado, {status:'success'})
                     Swal.fire({
                           type: 'success',
                           title: response.data.Resultado,
                           showConfirmButton: false,
-                          timer: 1500
+                          timer: 2000
                         })
+                    $location.url("/otros_pagos");
                     $scope.pago.boleta="";
                     $scope.pago.valor_pago="";
                     $scope.pago.detalle="";
@@ -136,14 +142,16 @@ angular.module('App').controller('pagar_otrosCtrl', ['$scope', '$rootScope','$ht
                       }).then(function mySuccess(response) {
                         console.log(response);
                         //console.log("boletas"+JSON.stringify(response.data));
-                        UIkit.notification(response.data.Resultado, {status:'success'})
+                        //UIkit.notification(response.data.Resultado, {status:'success'})
                          Swal.fire({
                           type: 'success',
                           title: response.data.Resultado,
                           showConfirmButton: false,
-                          timer: 1500
+                          timer: 2000
                         })
                         $scope.finalizar_boleta_matricula();
+                        $scope.listar_boletas();
+                        $location.url("/otros_pagos");
                         $scope.pago.boleta="";
                         $scope.pago.valor_pago="";
                         $scope.pago.detalle="";
@@ -163,13 +171,14 @@ angular.module('App').controller('pagar_otrosCtrl', ['$scope', '$rootScope','$ht
                       }).then(function mySuccess(response) {
                         console.log(response);
                         //console.log("boletas"+JSON.stringify(response.data));
-                        UIkit.notification(response.data.Resultado, {status:'success'})
+                        //UIkit.notification(response.data.Resultado, {status:'success'})
                         Swal.fire({
                           type: 'success',
                           title: response.data.Resultado,
                           showConfirmButton: false,
-                          timer: 1500
+                          timer: 2000
                         })
+                        $location.url("/otros_pagos");
                         $scope.pago.boleta="";
                         $scope.pago.valor_pago="";
                         $scope.pago.detalle="";

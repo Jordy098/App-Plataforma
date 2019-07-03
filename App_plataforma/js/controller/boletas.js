@@ -9,4 +9,8 @@ angular.module('App').controller('boletasCtrl', ['$scope', '$rootScope','$http',
           }, function myError(response) {
             //$scope.Usuarios_matricula=response.statusText;
           });
+    
+    $scope.detalle=function(id){
+        console.log(id);
+    }
 }]);

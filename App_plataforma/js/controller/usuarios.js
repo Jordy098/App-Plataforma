@@ -1,4 +1,4 @@
-angular.module('App').controller('usuariosCtrl', ['$scope', '$rootScope','$http', function ($scope, $rootScope,$http) {
+angular.module('App').controller('usuariosCtrl', ['$scope', '$rootScope','$http','$location','MyService', function ($scope, $rootScope,$http,$location,MyService) {
     x={ accion:"Listar_Usuarios"};
     $http({
         method : "GET",
@@ -9,4 +9,11 @@ angular.module('App').controller('usuariosCtrl', ['$scope', '$rootScope','$http'
           }, function myError(response) {
             //$scope.Usuarios_matricula=response.statusText;
           });
+    $scope.editar=function(id,rut){
+        //alert("wena"+usu.rut);
+        MyService.data.id=id;
+        MyService.data.rut=rut;
+        MyService.data.accion="usu";
+        $location.url("/editar_usuarios");
+    }
 }]);

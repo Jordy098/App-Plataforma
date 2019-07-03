@@ -40,14 +40,14 @@ angular.module('App').controller('editar_docenteCtrl', ['$scope', '$rootScope','
           //alert(response.data.Resultado);
              //UIkit.notification(response.data.Resultado, {status:'success'})
             //$scope.Usuarios=response.data.usuarios;
+                Swal.fire({
+              type: 'success',
+              title: response.data.Resultado,
+              showConfirmButton: false,
+              timer: 1500
+            })
           }, function myError(response) {
             //$scope.Usuarios_matricula=response.statusText;
           });
-        Swal.fire({
-          type: 'success',
-          title: 'Los cambios fueron relaizados con exito',
-          showConfirmButton: false,
-          timer: 1500
-        })
     }
 }]);

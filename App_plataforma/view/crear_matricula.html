@@ -11,10 +11,10 @@
                 <h3><b>Alumno</b></h3>
                 <div class="uk-child-width-expand@s uk-text-center" uk-grid>
                     <div>
-                        <input oninput="checkRut(this)" ng-model="usuario.rut" class="uk-input" id="form-horizontal-text" maxlength="10" type="text" placeholder="Rut" required>
+                        <input oninput="checkRut(this)" ng-model="usuario.rut" class="uk-input" id="form-horizontal-text" maxlength="10" type="text" placeholder="Rut" autocomplete="off" required>
                     </div>
                     <div>
-                        <input class="uk-input" id="form-horizontal-text" type="text" ng-model="usuario.nombre" placeholder="Nombre" required>
+                        <input class="uk-input" id="form-horizontal-text" type="text" ng-model="usuario.nombre" placeholder="Nombre" autocomplete="off" required>
                     </div>
                     <div style="text-align: left">
                         <label>Fecha Nacimiento</label>
@@ -24,18 +24,18 @@
                 </div>
                 <div class="uk-child-width-expand@s uk-text-center" uk-grid>
                     <div>
-                        <input class="uk-input" id="form-horizontal-text" type="email" ng-model="usuario.correo" placeholder="Correo" required>
+                        <input class="uk-input" id="form-horizontal-text" type="email" ng-model="usuario.correo" autocomplete="off" placeholder="Correo" required>
                     </div>
                     <div>
-                        <input class="uk-input" id="form-horizontal-text" ng-model="usuario.telefono" type="phone" placeholder="Telefono" required>
+                        <input class="uk-input" id="form-horizontal-text" ng-model="usuario.telefono" type="phone" placeholder="Telefono" autocomplete="off" required>
                     </div>
                     <div>
-                        <input class="uk-input" ng-model="usuario.ciudad" id="form-horizontal-text" type="text" placeholder="Ciudad" required>
+                        <input class="uk-input" ng-model="usuario.ciudad" id="form-horizontal-text" type="text" placeholder="Ciudad" autocomplete="off" required>
                     </div>
                 </div>
                 <div class="uk-child-width-expand@s uk-text-center" uk-grid>
                      <div>
-                        <input class="uk-input" id="form-horizontal-text" ng-model="usuario.direccion" type="text" placeholder="Direccion" required>
+                        <input class="uk-input" id="form-horizontal-text" ng-model="usuario.direccion" type="text" placeholder="Direccion" autocomplete="off" required>
                     </div>
                     <div>
                     </div>
@@ -46,20 +46,24 @@
                 <h3><b>Matricula</b></h3>
                 <div class="uk-child-width-expand@s uk-text-center" uk-grid>
                    <div>
-                        <input class="uk-input" id="form-horizontal-text" type="text" placeholder="Curso" ng-model="matricula.curso" required>
+<!--                        <input class="uk-input" id="form-horizontal-text" type="text" placeholder="Curso" ng-model="matricula.curso" required>-->
+                       <select class="uk-select" ng-model="matricula.curso" id="form-horizontal-select" style="width: 60%" required>
+                            <option value="" selected disabled>Seleccione Curso</option>
+                            <option value="{{c.id}}"  ng-repeat="c in Cursos">{{c.nombre}}</option>
+                        </select>
                     </div>
                     <div style="text-align: left">
-                        <label>Semestres</label>
+                        <label>Meses</label>
                         <select class="uk-select" ng-model="matricula.semestres" id="form-horizontal-select" ng-change="" style="width: 60%" required>
-                            <option value="" selected disabled>Seleccione Semestres</option>
-                            <option value="1">1 Semestre</option>
-                            <option value="2">2 Semestres</option>
-                            <option value="3">3 Semestres</option>
-                            <option value="4">4 Semestres</option>
-                            <option value="5">5 Semestres</option>
-                            <option value="6">6 Semestres</option>
-                            <option value="7">7 Semestres</option>
-                            <option value="8">8 Semestres</option>
+                            <option value="" selected disabled>Seleccione una cantidad</option>
+                            <option value="1">1 mes</option>
+                            <option value="2">2 meses</option>
+                            <option value="3">3 meses</option>
+                            <option value="4">4 meses</option>
+                            <option value="5">5 meses</option>
+                            <option value="6">6 meses</option>
+                            <option value="7">7 meses</option>
+                            <option value="8">8 meses</option>
                         </select>
                     </div>
                     <div></div>
@@ -68,17 +72,22 @@
                 <h3><b>Boleta</b></h3>
                 <div class="uk-child-width-expand@s uk-text-center" uk-grid>
                     <div>
-                        <input class="uk-input" ng-model="boleta.monto" id="form-horizontal-text" type="number" placeholder="$ Valor" required>
+                        <input class="uk-input" ng-model="boleta.monto" id="form-horizontal-text" type="number" placeholder="$ Valor Curso" min="1" pattern="^[0-9]+" autocomplete="off" required>
                     </div>
                     <div style="text-align: left">
-                        <label>Plan</label>
+                        <label>Cuotas</label>
                         <select class="uk-select" ng-model="boleta.planes" id="form-horizontal-select" ng-change="Seleccion_plan()" style="width: 60%" required>
-                            <option value="" selected disabled>Seleccione un Plan</option>
-                            <option value="1">Plan 1</option>
-                            <option value="2">Plan 2</option>
-                            <option value="3">Plan 3</option>
-                            <option value="4">Plan 4</option>
-                            <option value="5">Plan 5</option>
+                            <option value="" selected disabled>Seleccione un número</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
                         </select>
                     </div>
                     <div style="text-align: left">
@@ -90,19 +99,19 @@
                 <div class="uk-child-width-expand@s uk-text-center" uk-grid>
                     <div style="text-align: left">
                         <label style="margin-right: 20px">Primera Cuota</label>
-                        <input type="date" name="fecha" ng-model="boleta.primera_cuota" required>
+                        <input ng-change="calcular_ultima_fecha()" type="date" name="fecha" ng-model="boleta.primera_cuota" required>
                     </div>
                     <div style="text-align: left">
                         <label style="margin-right: 20px">Ultima cuota</label>
                         <input type="date" name="fecha" ng-model="boleta.ultima_cuota" required>
                     </div>
                      <div style="text-align: left">
-                        <input class="uk-input" id="form-horizontal-text" ng-model="arancel" type="number" placeholder="$ Valor Arancel" required>
+                        <input class="uk-input" id="form-horizontal-text" ng-model="arancel" type="number" placeholder="$ Valor Matricula" autocomplete="off" required>
                     </div>
                 </div>
                 <div class="uk-child-width-expand@s uk-text-center" uk-grid>
                     <div style="text-align: left">
-                        <label style="margin-right: 20px">Fecha Arancel</label>
+                        <label style="margin-right: 20px">Fecha Matricula</label>
                          <input type="date" name="fecha" ng-model="fecha_arancel" required>
                     </div>
                 </div>

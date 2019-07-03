@@ -1,6 +1,8 @@
 var App = angular.module("App", [
-    "ui.router",
-    "oc.lazyLoad"
+    'ui.router',
+    'ui.bootstrap',
+    'angularUtils.directives.dirPagination',
+    'oc.lazyLoad'
 ]);
 
 
@@ -17,8 +19,14 @@ App.run(function($rootScope) {
     }
 });
 
-App.controller('AppController', ['$scope','$location', function($scope, $location) {
+App.controller('AppController', ['$scope','$location','MyService', function($scope, $location,MyService) {
   console.log("bienvenido");
+  $scope.u_editar=function(){
+        $scope.seleccionar('Editar_Usuario');
+        var usu=JSON.parse(localStorage.getItem("Usuario"));
+        MyService.data.accion="mio";
+        $location.path("editar_usuario");
+    }
   $scope.seleccionar=function(menu){
       $scope.activacionU="";
       $scope.activacionP="";
@@ -32,6 +40,7 @@ App.controller('AppController', ['$scope','$location', function($scope, $locatio
       $scope.activacion3_5="";
       $scope.activacion4="";
       $scope.activacion5="";
+      $scope.activacion5_5="";
       $scope.activacion6="";
       if(menu=='Docentes'){
           $scope.activacion0="uk-active";
@@ -67,13 +76,16 @@ App.controller('AppController', ['$scope','$location', function($scope, $locatio
           $scope.activacionP="uk-active";
           $scope.activacion5="uk-active";
       }
+      else if(menu=='Editar_Usuario'){
+          $scope.activacion5_5="uk-active";
+      }
       else if(menu=='Configuracion'){
           $scope.activacion6="uk-active";
       }
   }
   $scope.logout = function() { 
     localStorage.removeItem("Usuario");
-    $location.path('/login');
+    $location.path('login');
   };
 }]);
 
@@ -141,10 +153,36 @@ App.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                         }
                         
                     })
+                .state("Crear-Usuario", {
+                        url: "/crear_usuario",
+                        templateUrl: "view/crear_usuario.html",
+                        controller: 'crear_usuarioCtrl',
+                        resolve: { 
+                            "check": function($location, $rootScope){
+                                if(localStorage.getItem('Usuario')==null){
+                                   $location.path('/');
+                                }
+                            }
+                        }
+                        
+                    })
                 .state("Editar-Usuario", {
                         url: "/editar_usuario",
                         templateUrl: "view/editar_usuario.html",
                         controller: 'editar_usuarioCtrl',
+                        resolve: { 
+                            "check": function($location, $rootScope){
+                                if(localStorage.getItem('Usuario')==null){
+                                   $location.path('/');
+                                }
+                            }
+                        }
+                        
+                    })
+                .state("Editar-Usuarios", {//Este editar comparte la vista de Editar usuario, lo que cambia es el controlador y la ruta
+                        url: "/editar_usuarios",
+                        templateUrl: "view/editar_usuario.html",
+                        controller: 'editar_usuariosCtrl',
                         resolve: { 
                             "check": function($location, $rootScope){
                                 if(localStorage.getItem('Usuario')==null){
@@ -197,6 +235,19 @@ App.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                         url: "/editar_alumno",
                         templateUrl: "view/editar_alumno.html",
                         controller: 'editar_alumnoCtrl',
+                        resolve: { 
+                            "check": function($location, $rootScope){
+                                if(localStorage.getItem('Usuario')==null){
+                                   $location.path('/');
+                                }
+                            }
+                        }
+                        
+                    })
+                .state("Detalle-Pagos", {
+                        url: "/detalle_pagos",
+                        templateUrl: "view/detalle_pagos.html",
+                        controller: 'detalle_pagosCtrl',
                         resolve: { 
                             "check": function($location, $rootScope){
                                 if(localStorage.getItem('Usuario')==null){
@@ -392,6 +443,32 @@ App.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                         }
                         
                     })
+                .state("Crear-Curso", {
+                        url: "/crear_curso",
+                        templateUrl: "view/crear_curso.html",
+                        controller: 'crear_cursoCtrl',
+                        resolve: { 
+                            "check": function($location, $rootScope){
+                                if(localStorage.getItem('Usuario')==null){
+                                   $location.path('/');
+                                }
+                            }
+                        }
+                        
+                    })
+                .state("Editar-Curso", {
+                        url: "/editar_curso",
+                        templateUrl: "view/editar_curso.html",
+                        controller: 'editar_cursoCtrl',
+                        resolve: { 
+                            "check": function($location, $rootScope){
+                                if(localStorage.getItem('Usuario')==null){
+                                   $location.path('/');
+                                }
+                            }
+                        }
+                        
+                    })
                 //---------------------------------------------------------------------------Boleta
                 .state("Boletas", {
                         url: "/boletas",
@@ -450,6 +527,32 @@ App.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                         url: "/sedes",
                         templateUrl: "view/sedes.html",
                         controller: 'sedesCtrl',
+                        resolve: { 
+                            "check": function($location, $rootScope){
+                                if(localStorage.getItem('Usuario')==null){
+                                   $location.path('/');
+                                }
+                            }
+                        }
+                        
+                    })
+                .state("Crear-Sede", {
+                        url: "/crear_sede",
+                        templateUrl: "view/crear_sede.html",
+                        controller: 'crear_sedeCtrl',
+                        resolve: { 
+                            "check": function($location, $rootScope){
+                                if(localStorage.getItem('Usuario')==null){
+                                   $location.path('/');
+                                }
+                            }
+                        }
+                        
+                    })
+                .state("Editar-Sede", {
+                        url: "/editar_sede",
+                        templateUrl: "view/editar_sede.html",
+                        controller: 'editar_sedeCtrl',
                         resolve: { 
                             "check": function($location, $rootScope){
                                 if(localStorage.getItem('Usuario')==null){
